@@ -8,6 +8,16 @@ class Edge {
     }
 }
 
+class Driver {
+    String id;
+    String currentLocation;
+
+    Driver(String id, String currentLocation) {
+        this.id = id;
+        this.currentLocation = currentLocation;
+    }
+}
+
 class RideSharingETA {
    public static void main(String[] args) throws InterruptedException
   {
