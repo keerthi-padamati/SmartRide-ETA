@@ -59,6 +59,10 @@ class RideSharingETA
                 new Driver("Driver3", "C")
         );
 
+         List<User> users = Arrays.asList(
+                new User("User1", "D"),
+                new User("User2", "C")
+        );
 
     }
 }
