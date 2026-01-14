@@ -53,5 +53,12 @@ class RideSharingETA
         cityMap.put("C", Arrays.asList(new Edge("A", 10), new Edge("B", 3), new Edge("D", 1)));
         cityMap.put("D", Arrays.asList(new Edge("B", 7), new Edge("C", 1)));
 
+        List<Driver> drivers = Arrays.asList(
+                new Driver("Driver1", "A"),
+                new Driver("Driver2", "B"),
+                new Driver("Driver3", "C")
+        );
+
+
     }
 }
