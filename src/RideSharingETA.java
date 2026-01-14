@@ -1,3 +1,13 @@
+class DriverETA {
+    Driver driver;
+    int eta;
+
+    DriverETA(Driver driver, int eta) {
+        this.driver = driver;
+        this.eta = eta;
+    }
+}
+
 class Edge
 {
     String destination;
