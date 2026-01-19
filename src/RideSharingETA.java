@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 class DriverETA {
     Driver driver;
@@ -54,6 +55,8 @@ class User
 
 class RideSharingETA
 {
+     private static ConcurrentHashMap<String, Integer> distanceCache = new ConcurrentHashMap<>();
+
     public static void main(String[] args) throws InterruptedException
     {
         Map<String, List<Edge>> cityMap = new HashMap<>();
