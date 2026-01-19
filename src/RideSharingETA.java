@@ -82,6 +82,7 @@ class RideSharingETA
                 System.out.println("Nearest driver to " + user.id + " is " + nearestDriver.id + " with ETA " + eta + " mins");
             });
         }
-        
+        executor.shutdown();
+        executor.awaitTermination(1, TimeUnit.MINUTES);
     }
 }
