@@ -57,13 +57,39 @@ class RideSharingETA
 {
     private static ConcurrentHashMap<String, Integer> distanceCache = new ConcurrentHashMap<>();
 
-    public static int computeDistance(String from, String to, Map<String, List<Edge>> cityMap) {
+    public static int computeDistance(String from, String to, Map<String, List<Edge>> cityMap)
+    {
     String cacheKey = from + "-" + to;
     if (distanceCache.containsKey(cacheKey))
         return distanceCache.get(cacheKey);
 
-    }
+        Queue<String> queue = new LinkedList<>();
+        Map<String, Integer> visited = new HashMap<>();
+        queue.add(from);
+        visited.put(from, 0);
 
+        while (!queue.isEmpty()) {
+            String current = queue.poll();
+            int currentTime = visited.get(current);
+
+            if (current.equals(to)) {
+                distanceCache.put(cacheKey, currentTime);
+                return currentTime;
+            }
+
+            List<Edge> neighbors = cityMap.getOrDefault(current, new ArrayList<>());
+            for (Edge edge : neighbors) {
+                if (!visited.containsKey(edge.destination)) {
+                    visited.put(edge.destination, currentTime + edge.travelTime);
+                    queue.add(edge.destination);
+                }
+            }
+        }
+
+        distanceCache.put(cacheKey, Integer.MAX_VALUE);
+        return Integer.MAX_VALUE; // No path found
+    }
+    
     public static void main(String[] args) throws InterruptedException
     {
         Map<String, List<Edge>> cityMap = new HashMap<>();
