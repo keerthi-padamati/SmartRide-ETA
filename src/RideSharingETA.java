@@ -8,11 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-class DriverETA {
+class DriverETA
+{
     Driver driver;
     int eta;
 
-    DriverETA(Driver driver, int eta) {
+    DriverETA(Driver driver, int eta)
+    {
         this.driver = driver;
         this.eta = eta;
     }
@@ -30,7 +32,8 @@ class Edge
     }
 }
 
-class Driver{
+class Driver
+{
     String id;
     String currentLocation;
 
@@ -72,14 +75,17 @@ class RideSharingETA
             String current = queue.poll();
             int currentTime = visited.get(current);
 
-            if (current.equals(to)) {
+            if (current.equals(to))
+            {
                 distanceCache.put(cacheKey, currentTime);
                 return currentTime;
             }
 
             List<Edge> neighbors = cityMap.getOrDefault(current, new ArrayList<>());
-            for (Edge edge : neighbors) {
-                if (!visited.containsKey(edge.destination)) {
+            for (Edge edge : neighbors)
+            {
+                if (!visited.containsKey(edge.destination))
+                {
                     visited.put(edge.destination, currentTime + edge.travelTime);
                     queue.add(edge.destination);
                 }
@@ -87,7 +93,7 @@ class RideSharingETA
         }
 
         distanceCache.put(cacheKey, Integer.MAX_VALUE);
-        return Integer.MAX_VALUE; // No path found
+        return Integer.MAX_VALUE;
     }
     
     public static void main(String[] args) throws InterruptedException
