@@ -95,6 +95,18 @@ class RideSharingETA
         distanceCache.put(cacheKey, Integer.MAX_VALUE);
         return Integer.MAX_VALUE;
     }
+
+    public static Driver findNearestDriver(User user, List<Driver> drivers, Map<String, List<Edge>> cityMap) {
+        PriorityQueue<DriverETA> driverQueue = new PriorityQueue<>(Comparator.comparingInt(d -> d.eta));
+
+        for (Driver driver : drivers) {
+            int eta = computeDistance(driver.currentLocation, user.pickupLocation, cityMap);
+            driverQueue.add(new DriverETA(driver, eta));
+        }
+
+        return driverQueue.poll().driver;
+    }
+
     
     public static void main(String[] args) throws InterruptedException
     {
