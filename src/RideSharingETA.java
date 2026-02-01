@@ -31,7 +31,7 @@ class Edge
     String destination;
     int travelTime;
 
-    Edge(String destination, int travelTime
+    Edge(String destination, int travelTime)
     {
         this.destination = destination;
         this.travelTime = travelTime;
@@ -112,8 +112,10 @@ class RideSharingETA
             int eta = computeDistance(driver.currentLocation, user.pickupLocation, cityMap);
             driverQueue.add(new DriverETA(driver, eta));
         }
-
-        return driverQueue.poll().driver;
+        
+        DriverETA best = driverQueue.poll();
+        return best == null ? null : best.driver;
+        
     }
 
     
