@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Comparator;
+
+
 
 class DriverETA
 {
@@ -71,7 +77,8 @@ class RideSharingETA
         queue.add(from);
         visited.put(from, 0);
 
-        while (!queue.isEmpty()) {
+        while (!queue.isEmpty())
+        {
             String current = queue.poll();
             int currentTime = visited.get(current);
 
@@ -96,10 +103,12 @@ class RideSharingETA
         return Integer.MAX_VALUE;
     }
 
-    public static Driver findNearestDriver(User user, List<Driver> drivers, Map<String, List<Edge>> cityMap) {
+    public static Driver findNearestDriver(User user, List<Driver> drivers, Map<String, List<Edge>> cityMap)
+    {
         PriorityQueue<DriverETA> driverQueue = new PriorityQueue<>(Comparator.comparingInt(d -> d.eta));
 
-        for (Driver driver : drivers) {
+        for (Driver driver : drivers)
+        {
             int eta = computeDistance(driver.currentLocation, user.pickupLocation, cityMap);
             driverQueue.add(new DriverETA(driver, eta));
         }
