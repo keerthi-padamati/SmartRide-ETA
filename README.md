@@ -53,6 +53,41 @@ Goal:
 
 ---
 
+
+Key Features
+------------
+- Represents city roads using adjacency lists
+- Supports multiple drivers and users
+- Computes ETA using graph traversal
+- Uses multithreading to process users concurrently
+- Caches distances to improve performance
+
+
+---
+
+
+## Where It Can Be Used
+
+- Ride-sharing apps like Uber, Lyft, Bolt  
+- Food or parcel delivery apps  
+- Fleet management systems  
+- Any system needing **real-time nearest resource selection**
+
+
+
+---
+
+## Example Output
+
+Nearest driver to User1 is Driver3 with ETA 1 mins
+
+
+Nearest driver to User2 is Driver3 with ETA 0 mins
+
+
+---
+
+
 ## Optimizations Done
 
 - **Distance Cache**: Stores previously calculated distances to save time.  
@@ -69,60 +104,6 @@ Goal:
 - Implement **Dijkstra’s algorithm** for realistic shortest path.  
 - Support **different car types or multiple vehicles per driver**.  
 - Handle **many users and drivers** efficiently with better load balancing.
-
----
-
-## Where It Can Be Used
-
-- Ride-sharing apps like Uber, Lyft, Bolt  
-- Food or parcel delivery apps  
-- Fleet management systems  
-- Any system needing **real-time nearest resource selection**
-
----
-
-Key Features
-------------
-- Represents city roads using adjacency lists
-- Supports multiple drivers and users
-- Computes ETA using graph traversal
-- Uses multithreading to process users concurrently
-- Caches distances to improve performance
-
-How It Works
-------------
-1. City is represented as a graph with weighted edges.
-2. For each user request:
-   - Calculate ETA from every driver to pickup location
-   - Select driver with minimum ETA
-3. Print nearest driver and ETA.
-
-Technologies Used
------------------
-- Java
-- ExecutorService for concurrency
-- PriorityQueue for driver selection
-- ConcurrentHashMap for caching
-
-Limitations / Issues
---------------------
-- Uses BFS for weighted graph traversal (incorrect for weights)
-- Static shared cache reduces reusability
-- No clear separation of responsibilities
-- Limited edge-case handling (empty drivers, unreachable nodes)
-- Hard to extend for production use
-
----
-
-## Example Output
-
-Nearest driver to User1 is Driver3 with ETA 1 mins
-\n
-Nearest driver to User2 is Driver3 with ETA 0 mins
-
-
-
----
 
 
 ## Future Improvements
@@ -151,6 +132,33 @@ Nearest driver to User2 is Driver3 with ETA 0 mins
 7. **Vehicle Type & Availability Management**  
    - Support different vehicle types (cars, bikes, vans).  
    - Track driver availability to assign rides only to free drivers.
+  
+
+
+---
+
+Technologies Used
+-----------------
+- Java
+- ExecutorService for concurrency
+- PriorityQueue for driver selection
+- ConcurrentHashMap for caching
+
+---
+
+
+
+Limitations / Issues
+--------------------
+- Uses BFS for weighted graph traversal (incorrect for weights)
+- Static shared cache reduces reusability
+- No clear separation of responsibilities
+- Limited edge-case handling (empty drivers, unreachable nodes)
+- Hard to extend for production use
+  
+---
+
+
 
 **User-Friendly Note:**
 
