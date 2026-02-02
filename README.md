@@ -81,6 +81,39 @@ Goal:
 
 ---
 
+Key Features
+------------
+- Represents city roads using adjacency lists
+- Supports multiple drivers and users
+- Computes ETA using graph traversal
+- Uses multithreading to process users concurrently
+- Caches distances to improve performance
+
+How It Works
+------------
+1. City is represented as a graph with weighted edges.
+2. For each user request:
+   - Calculate ETA from every driver to pickup location
+   - Select driver with minimum ETA
+3. Print nearest driver and ETA.
+
+Technologies Used
+-----------------
+- Java
+- ExecutorService for concurrency
+- PriorityQueue for driver selection
+- ConcurrentHashMap for caching
+
+Limitations / Issues
+--------------------
+- Uses BFS for weighted graph traversal (incorrect for weights)
+- Static shared cache reduces reusability
+- No clear separation of responsibilities
+- Limited edge-case handling (empty drivers, unreachable nodes)
+- Hard to extend for production use
+
+---
+
 ## Example Output
 
 Nearest driver to User1 is Driver3 with ETA 1 mins
@@ -120,6 +153,6 @@ Nearest driver to User2 is Driver3 with ETA 0 mins
 
 **User-Friendly Note:**
 
-> “You can test this program with **any number of drivers**. Simply modify the drivers list in the code with your own IDs and locations. The program will automatically calculate the nearest driver and ETA for any user.”
+> “ You can test this program with **any number of drivers**. Simply modify the drivers list in the code with your own IDs and locations. The program will automatically calculate the nearest driver and ETA for any user. ”
 
 ---
