@@ -36,16 +36,6 @@ Goal:
    - City is represented as locations connected by roads.  
    - Each road has a travel time in minutes.  
 
-Example:
-
-Locations (Nodes) and Roads (Edges):
-A ---5--- B ---3--- C
- \        |       |
- 10       7       1
-  \       |       |
-   C      D------- 
-
-
 
 2. **Drivers and Users**  
    - Drivers have a current location.  
@@ -60,26 +50,6 @@ A ---5--- B ---3--- C
 
 5. **Concurrent Requests**  
    - Multiple users are processed **at the same time** using threads (`ExecutorService`).
-
----
-
-## Visual Flow
-
-[User Request]
-       |
-       v
-[Thread Pool Executor]
-       |
-       v
-[Compute ETA to all Drivers] -----> [Distance Cache] 
-       |
-       v
-[Push into PriorityQueue] ---> [Select Nearest Driver]
-       |
-       v
-[Print Result]
-
-
 
 ---
 
