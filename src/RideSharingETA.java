@@ -22,5 +22,17 @@ class Driver
     }
 }
 
+class User
+{
+    final String id;
+    final String pickup;
+
+    User(String id, String pickup)
+    {
+        this.id = id;
+        this.pickup = pickup;
+    }
+}
+
 
 
