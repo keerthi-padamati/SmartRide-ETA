@@ -10,3 +10,17 @@ class Edge
     }
 }
 
+class Driver
+{
+    final String id;
+    final String location;
+
+    Driver(String id, String location)
+    {
+        this.id = id;
+        this.location = location;
+    }
+}
+
+
+
