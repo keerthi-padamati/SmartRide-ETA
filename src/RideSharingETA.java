@@ -10,6 +10,7 @@ class Edge
     }
 }
 
+
 class Driver
 {
     final String id;
@@ -21,6 +22,7 @@ class Driver
         this.location = location;
     }
 }
+
 
 class User
 {
@@ -80,10 +82,22 @@ class CityGraph
                 }
             }
         }
+		
         return Integer.MAX_VALUE;
     }
 
-    
+	private static class Node
+	{
+		String name;
+	    int dist;
+	
+	    Node(String name, int dist)
+		{
+	        this.name = name;
+	        this.dist = dist;
+        }
+    }
+	
 }
 
 
