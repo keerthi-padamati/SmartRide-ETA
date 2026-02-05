@@ -36,6 +36,56 @@ class User
 
 
 
+class CityGraph
+{
+
+    private final Map<String, List<Edge>> graph;
+
+    CityGraph(Map<String, List<Edge>> graph)
+    {
+        this.graph = graph;
+    }
+
+    int shortestDistance(String src, String dest)
+    {
+
+        if (src.equals(dest))
+		    return 0;
+
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(n -> n.dist));
+        Map<String, Integer> dist = new HashMap<>();
+
+        pq.offer(new Node(src, 0));
+        dist.put(src, 0);
+
+        while (!pq.isEmpty())
+        {
+            Node cur = pq.poll();
+
+            if (cur.name.equals(dest))
+                return cur.dist;
+            
+
+            if (cur.dist > dist.get(cur.name))
+                continue;
+
+            for (Edge e : graph.getOrDefault(cur.name, List.of()))
+            {
+                int nextDist = cur.dist + e.time;
+
+                if (nextDist < dist.getOrDefault(e.to, Integer.MAX_VALUE))
+                {
+                    dist.put(e.to, nextDist);
+                    pq.offer(new Node(e.to, nextDist));
+                }
+            }
+        }
+        return Integer.MAX_VALUE;
+    }
+
+    
+}
+
 
 
 
