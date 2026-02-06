@@ -116,7 +116,27 @@ class DistanceCache
 }
 
 
+class RideSharingService
+{
 
+    private final CityGraph graph;
+    private final DistanceCache cache = new DistanceCache();
+
+    RideSharingService(CityGraph graph)
+	{
+        this.graph = graph;
+    }
+
+    Optional<Driver> findNearestDriver(User user, List<Driver> drivers)
+	{
+        return drivers.stream().min(Comparator.comparingInt( d -> cache.getOrCompute( d.location, user.pickup, graph) 
+															)
+								   );
+		
+    }
+
+
+}
 
 
 
