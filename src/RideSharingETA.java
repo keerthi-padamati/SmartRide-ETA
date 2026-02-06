@@ -135,6 +135,10 @@ class RideSharingService
 		
     }
 
+	int getETA(Driver driver, User user)
+	{
+        return cache.getOrCompute( driver.location, user.pickup, graph);
+    }
 
 }
 
