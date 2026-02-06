@@ -101,7 +101,19 @@ class CityGraph
 }
 
 
+class DistanceCache
+{
 
+    private static final String SEP = "->";
+	
+    private final ConcurrentMap<String, Integer> cache = new ConcurrentHashMap<>();
+	
+    int getOrCompute(String from, String to, CityGraph graph)
+	{
+        String key = from + SEP + to;
+        return cache.computeIfAbsent(key, k -> graph.shortestDistance(from, to));
+    }
+}
 
 
 
